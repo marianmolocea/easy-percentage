@@ -2,18 +2,23 @@ import Head from 'next/head';
 import { useState } from 'react';
 
 import Input from '../components/Input';
-import { calculateXPercentOf } from '../utils/calculatePercent';
+import {
+    calculateXIncreaseDecreaseBy, calculateXIsPercentOf, calculateXofYPercent, calculateXPercentOf,
+    Sides
+} from '../utils/calculatePercent';
 
 type ChangeValuesType = {
   value: number
   row: string
   valueType: 'x' | 'y'
+  side?: number
 }
 
 type RowValesType = {
   x: undefined | number
   y: undefined | number
   res: '-' | number
+  side?: number
 }
 
 const initialState: Record<string, RowValesType> = {
@@ -27,7 +32,11 @@ export default function Home() {
   const [values, setValues] = useState(initialState)
   const [isIncrease, setIsIncrease] = useState(true)
 
-  const handleChangeValues = ({ value, row, valueType }: ChangeValuesType) => {
+  const handleChangeValues = ({
+    value,
+    row,
+    valueType,
+  }: ChangeValuesType) => {
     let res: number | '-' = '-'
     const { x, y } = values[row]
     const xValue = valueType === 'x' ? value : x
@@ -38,10 +47,17 @@ export default function Home() {
           res = calculateXPercentOf({ x: xValue, y: yValue })
           break
         case 'row2':
+          res = calculateXofYPercent({ x: xValue, y: yValue })
           break
         case 'row3':
+          res = calculateXIsPercentOf({ x: xValue, y: yValue })
           break
         case 'row4':
+          res = calculateXIncreaseDecreaseBy({
+            x: xValue,
+            y: yValue,
+            isIncrease: isIncrease,
+          })
           break
 
         default:
