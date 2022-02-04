@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 
 type InputProps = {
   placeholder: string
-  type: 'percentage' | 'number'
-  onChange: (val: number) => void
+  onChange: (val: number | undefined) => void
   value: undefined | number
 }
 
-function Input({ placeholder, type, onChange, value }: InputProps) {
-
-  const limits = type === 'percentage' ? { min: 0, max: 100 } : {}
-
+function Input({ placeholder, onChange, value }: InputProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
 
-    let newValue: number = 0
-    if (type === 'percentage') {
-      newValue = +value > 100 ? 100 : +value < 0 ? 0 : +value
+    let newValue: number | undefined = undefined
+    if (value === '') {
+      newValue = undefined
     } else {
       newValue = +value
     }
@@ -27,12 +23,11 @@ function Input({ placeholder, type, onChange, value }: InputProps) {
   return (
     <input
       type="number"
-      className="mr-4 w-20 py-1 px-2"
+      className="input"
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
       step={0.01}
-      {...limits}
     />
   )
 }

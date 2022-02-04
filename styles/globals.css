@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .result {
+    @apply mx-4 justify-end text-base text-sky-600 md:text-lg;
+  }
+
+  .row-container {
+    @apply flex items-center justify-between;
+  }
+
+  .inputs-container {
+    @apply grid grid-cols-2 gap-2 md:flex md:flex-wrap-reverse items-center py-4;
+  }
+
+  .input {
+    @apply mr-4 block w-24 appearance-none rounded-md border border-slate-300 bg-white px-3 py-2 text-sm
+     placeholder-slate-400 shadow-sm focus:border-sky-200 focus:outline-none focus:ring-1
+     focus:ring-sky-200 disabled:border-slate-200 disabled:bg-slate-50 disabled:text-slate-500 disabled:shadow-none;
+  }
+
+  .toggle-button {
+   @apply border-b-2 w-28 mr-4 flex justify-evenly pl-1
+  }
+
+  .direction-up {
+    @apply border-b-blue-200
+  }
+
+  .direction-down {
+    @apply border-b-red-200
+  }
+}
