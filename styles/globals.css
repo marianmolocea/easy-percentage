@@ -4,7 +4,7 @@
 
 @layer components {
   .result {
-    @apply mx-4 justify-end text-base text-sky-600 md:text-lg;
+    @apply flex flex-wrap mx-4 justify-end text-base text-sky-600 md:text-lg;
   }
 
   .row-container {
@@ -12,7 +12,7 @@
   }
 
   .inputs-container {
-    @apply grid grid-cols-2 gap-2 md:flex md:flex-wrap-reverse items-center py-4;
+    @apply grid grid-cols-2 gap-2 md:flex md:flex-wrap items-center py-4;
   }
 
   .input {
