@@ -85,9 +85,10 @@ export default function Home() {
           content="Easy Percentage Calculator"
         />
         <meta name="application-name" content="Easy Percentage Calculator" />
+        <link rel="canonical" href="https://www.easypercentage.net/" />
       </Head>
 
-      <main className=" min-h-screen max-w-xl px-4 pt-4 ">
+      <main className=" min-h-screen max-w-2xl px-4 pt-4 ">
         <header>
           <h1 className="text-2xl font-bold md:px-4 md:text-4xl">
             Percentage Calculator
@@ -97,7 +98,7 @@ export default function Home() {
             online tool.
           </p>
         </header>
-        <section className="my-4 flex max-w-lg flex-col flex-wrap divide-y divide-gray-200 rounded-md bg-white p-4 drop-shadow-md md:m-4">
+        <section className="my-4 flex max-w-2xl flex-col flex-wrap divide-y divide-gray-200 rounded-md bg-white p-4 drop-shadow-md md:m-4">
           <div className="row-container">
             <div className="inputs-container">
               <div className="mr-4">What is</div>
@@ -233,7 +234,16 @@ export default function Home() {
             <strong className="result">{values.row4.res}</strong>
           </div>
         </section>
-        <footer className="px-4 text-xs">Copyright © 2022 Mario Molocea</footer>
+        <footer className="flex justify-between px-4">
+          <span className="text-xs">Copyright © 2022 Mario Molocea</span>
+          <a
+          className='text-xs'
+            rel="noopener noreferrer"
+            href="https://www.freeprivacypolicy.com/live/fe0515e7-a4fe-412c-abee-484ffc3d4bcd"
+          >
+            Privacy Policy
+          </a>
+        </footer>
       </main>
     </div>
   )
