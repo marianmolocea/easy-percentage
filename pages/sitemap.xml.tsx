@@ -26,13 +26,13 @@ export const getServerSideProps = async ({ res }: any) => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${staticPaths
-        .map((url) => {
+        .map((url, index) => {
           return `
             <url>
               <loc>${url}</loc>
               <lastmod>${new Date().toISOString()}</lastmod>
               <changefreq>monthly</changefreq>
-              <priority>1.0</priority>
+              <priority>${index === 0 ? '1.0' : '0.8'}</priority>
             </url>
           `
         })
