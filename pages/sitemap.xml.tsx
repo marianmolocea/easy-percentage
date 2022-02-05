@@ -4,26 +4,27 @@ const Sitemap = () => {
   return null
 }
 
-export const getServerSideProps = async ({ res }: any) => {
-  const staticPaths = fs
-    .readdirSync('pages')
-    .filter((staticPage) => {
-      return ![
-        'api',
-        'product',
-        '_app.tsx',
-        '_document.tsx',
-        '404.tsx',
-        'sitemap.xml.tsx',
-      ].includes(staticPage)
-    })
-    .map((staticPagePath) => {
-      const pathName = staticPagePath.split('.')[0]
-      const pageName = pathName === 'index' ? '' : pathName
-      return `${process.env.NEXT_PUBLIC_BASE_URL}/${pageName}`
-    })
+export async function getServerSideProps({ res }: any) {
+  try {
+    const staticPaths = fs
+      .readdirSync('pages')
+      .filter((staticPage) => {
+        return ![
+          'api',
+          'product',
+          '_app.tsx',
+          '_document.tsx',
+          '404.tsx',
+          'sitemap.xml.tsx',
+        ].includes(staticPage)
+      })
+      .map((staticPagePath) => {
+        const pathName = staticPagePath.split('.')[0]
+        const pageName = pathName === 'index' ? '' : pathName
+        return `${process.env.NEXT_PUBLIC_BASE_URL}/${pageName}`
+      })
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${staticPaths
         .map((url, index) => {
@@ -40,12 +41,15 @@ export const getServerSideProps = async ({ res }: any) => {
     </urlset>
   `
 
-  res.setHeader('Content-Type', 'text/xml')
-  res.write(sitemap)
-  res.end()
+    res.setHeader('Content-Type', 'text/xml')
+    res.write(sitemap)
+    res.end()
 
-  return {
-    props: {},
+    return {
+      props: {},
+    }
+  } catch (error) {
+    console.log(error)
   }
 }
 
