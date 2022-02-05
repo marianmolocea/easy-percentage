@@ -1,6 +1,6 @@
 function Privacy() {
   return (
-    <div>
+    <div className="p-8 bg-slate-50">
       <h1>Privacy Policy</h1>
       <p>Last updated: February 04, 2022</p>
       <p>
