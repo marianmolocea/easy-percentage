@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { useState } from 'react';
 
 import Input from '../components/Input';
@@ -86,6 +87,19 @@ export default function Home() {
         />
         <meta name="application-name" content="Easy Percentage Calculator" />
         <link rel="canonical" href="https://www.easypercentage.net/" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F6W5585YTH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-F6W5585YTH');
+        `}
+        </Script>
       </Head>
 
       <main className=" min-h-screen max-w-2xl px-4 pt-4 ">
@@ -237,7 +251,7 @@ export default function Home() {
         <footer className="flex justify-between px-4">
           <span className="text-xs">Copyright © 2022 Mario Molocea</span>
           <a
-          className='text-xs'
+            className="text-xs"
             rel="noopener noreferrer"
             href="https://www.freeprivacypolicy.com/live/fe0515e7-a4fe-412c-abee-484ffc3d4bcd"
           >
