@@ -72,18 +72,18 @@ export default function Home() {
     <div className="flex flex-col bg-gray-100 text-slate-700 md:items-center md:justify-center">
       {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
       <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F6W5585YTH"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALITYCS_TOKEN}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-F6W5585YTH');
+          gtag('config', '${process.env.GOOGLE_ANALITYCS_TOKEN}');
         `}
-        </Script>
+      </Script>
       <Head>
         <title>
           Easy Percentage Calculator | Free Online Percentage Calulator
