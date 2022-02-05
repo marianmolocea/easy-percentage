@@ -1,25 +1,27 @@
 import * as fs from 'fs';
 
 const Sitemap = () => {
-  return null;
-};
+  return null
+}
 
 export const getServerSideProps = async ({ res }: any) => {
   const staticPaths = fs
-    .readdirSync("pages")
+    .readdirSync('pages')
     .filter((staticPage) => {
       return ![
-        "api",
-        "product",
-        "_app.js",
-        "_document.js",
-        "404.js",
-        "sitemap.xml.js",
-      ].includes(staticPage);
+        'api',
+        'product',
+        '_app.tsx',
+        '_document.tsx',
+        '404.tsx',
+        'sitemap.xml.tsx',
+      ].includes(staticPage)
     })
     .map((staticPagePath) => {
-      return `${process.env.NEXT_PUBLIC_BASE_URL}/${staticPagePath}`;
-    });
+      const pathName = staticPagePath.split('.')[0]
+      const pageName = pathName === 'index' ? '' : pathName
+      return `${process.env.NEXT_PUBLIC_BASE_URL}/${pageName}`
+    })
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -32,19 +34,19 @@ export const getServerSideProps = async ({ res }: any) => {
               <changefreq>monthly</changefreq>
               <priority>1.0</priority>
             </url>
-          `;
+          `
         })
-        .join("")}
+        .join('')}
     </urlset>
-  `;
+  `
 
-  res.setHeader("Content-Type", "text/xml");
-  res.write(sitemap);
-  res.end();
+  res.setHeader('Content-Type', 'text/xml')
+  res.write(sitemap)
+  res.end()
 
   return {
     props: {},
-  };
-};
+  }
+}
 
-export default Sitemap;
+export default Sitemap
