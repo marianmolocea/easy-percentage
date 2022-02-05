@@ -18,7 +18,7 @@ export const getServerSideProps = async ({ res }: any) => {
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
-      return `${process.env.BASE_URL}/${staticPagePath}`;
+      return `${process.env.NEXT_PUBLIC_BASE_URL}/${staticPagePath}`;
     });
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

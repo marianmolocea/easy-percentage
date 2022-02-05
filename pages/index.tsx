@@ -72,7 +72,7 @@ export default function Home() {
     <div className="flex flex-col bg-gray-100 text-slate-700 md:items-center md:justify-center">
       {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALITYCS_TOKEN}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALITYCS_TOKEN}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -81,7 +81,7 @@ export default function Home() {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', '${process.env.GOOGLE_ANALITYCS_TOKEN}');
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALITYCS_TOKEN}');
         `}
       </Script>
       <Head>
