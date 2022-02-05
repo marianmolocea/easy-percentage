@@ -70,6 +70,20 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-gray-100 text-slate-700 md:items-center md:justify-center">
+      {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+      <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-F6W5585YTH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-F6W5585YTH');
+        `}
+        </Script>
       <Head>
         <title>
           Easy Percentage Calculator | Free Online Percentage Calulator
@@ -87,19 +101,6 @@ export default function Home() {
         />
         <meta name="application-name" content="Easy Percentage Calculator" />
         <link rel="canonical" href="https://www.easypercentage.net/" />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F6W5585YTH"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-F6W5585YTH');
-        `}
-        </Script>
       </Head>
 
       <main className=" min-h-screen max-w-2xl px-4 pt-4 ">
